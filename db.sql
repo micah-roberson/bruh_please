@@ -108,8 +108,8 @@ CREATE TABLE meal_plan_20k (
     "Total Cost" numeric
 );
 
-COPY recipes_macros FROM 'C:/Users/thebr/OneDrive/Desktop/Clever Cart/Clever Cart Code/bruh_please/ingredients_of_macros copy.csv' DELIMITER ',' CSV HEADER;
+COPY recipes_macros FROM '/home/ec2-user/bruh_please/ingredients_of_macros copy.csv' DELIMITER ',' CSV HEADER;
 
-COPY meal_plan_20k FROM 'C:/Users/thebr/OneDrive/Desktop/Clever Cart/Clever Cart Code/bruh_please/meal_plans_20k copy.csv' DELIMITER ',' CSV HEADER;
+COPY meal_plan_20k FROM '/home/ec2-user/bruh_please/meal_plans_20k copy.csv' DELIMITER ',' CSV HEADER;
 
-COPY recipes_ingredients FROM 'C:/Users/thebr/OneDrive/Desktop/Clever Cart/Clever Cart Code/bruh_please/recipes_with_macros copy.csv' DELIMITER ',' CSV HEADER;
+COPY recipes_ingredients FROM '/home/ec2-user/recipes_with_macros copy.csv' DELIMITER ',' CSV HEADER;
