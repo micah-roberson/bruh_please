@@ -4,15 +4,7 @@ const cors = require("cors");
 const pool = require("./db");
 const e = require("express");
 const fetch = require('node-fetch');
-const winston = require('winston');
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.json(),
-    defaultMeta: { service: 'your-service-name' },
-    transports: [
-        new winston.transports.File({ filename: 'logs/app.log' }),
-    ],
-});
+
 
 // //middleware 
 app.use(cors());
@@ -583,7 +575,7 @@ app.get("/grocery_ingredients/:name",async(req,res) => {
     }
 })
 
-logger.info('This log message will be written to app.log');
+
 
 app.listen(5002, () => {
     console.log("working bitch")
