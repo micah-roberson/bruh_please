@@ -1,0 +1,5 @@
+type,title,info,meal_plans
+moms,Breakfast Ideas,"Quick and Healthy",['Breakfast Plan A', 'Breakfast Plan B', 'Breakfast Plan C']
+college,Lunch Suggestions,"Balanced and Filling",['Lunch Plan X', 'Lunch Plan Y', 'Lunch Plan Z']
+brohs,Dinner Options,"Variety of Flavors",['Dinner Plan 1', 'Dinner Plan 2', 'Dinner Plan 3']
+
