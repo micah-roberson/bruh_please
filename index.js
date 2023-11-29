@@ -574,8 +574,48 @@ app.get("/grocery_ingredients/:name",async(req,res) => {
         console.log(error.message);
     }
 })
+app.get("/get_recipes_by_type/:type", async (req, res) => {
+    try {
+        const type = req.params.type;
+        const query = "SELECT * FROM recipes_page WHERE type = $1";
+        const result = await pool.query(query, [type]);
+
+        console.log(result.rows);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+app.get("/get_meal_plans_by_type/:type", async (req, res) => {
+    try {
+        const type = req.params.type;
+        const query = "SELECT * FROM meal_plan_page WHERE type = $1";
+        const result = await pool.query(query, [type]);
+
+        console.log(result.rows);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
 
+// Get meal plans by filter
+app.get("/get_meal_plans_by_filter/:filter", async (req, res) => {
+    try {
+        const filter = req.params.filter;
+        const query = "SELECT * FROM meal_plan_20k WHERE LOWER(\"Filter\") LIKE $1";
+        const result = await pool.query(query, [`%${filter.toLowerCase()}%`]);
+
+        console.log(result.rows);
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
 app.listen(5002, () => {
     console.log("working bitch")

@@ -3,7 +3,7 @@ import openai
 from tqdm import tqdm
 
 # Set up OpenAI API credentials
-openai.api_key = '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'
+openai.api_key = ''
 
 # Function to predict category based on meal names
 def predict_category(meal_data, engine):

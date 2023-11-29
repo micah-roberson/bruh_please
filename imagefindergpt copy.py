@@ -7,7 +7,7 @@ from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
 
 # Your API key
-API_KEY = "sk-OazLsYEiEPhCK4L9uAUeWxa9X6pzhe5yDhB2ZCg2Y4kHrclq"
+API_KEY = ""
 
 # Define the API URL
 url = "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image"

@@ -69,26 +69,28 @@ CREATE TABLE recipes_ingredients (
     carbs numeric
 );
 
+DROP TABLE IF EXISTS recipes_macros;
 
+-- Create the recipes_macros table
 CREATE TABLE recipes_macros (
-    "recipe name" text,
-    "Category" text,
-    "Description" text,
-    "Instructions" text,
-    "Grocery Items" text,
-    "Grocery Quantities" text,
-    "Grocery Types" text,
-    "Total Time" text,
-    "Serving Size" integer,
-    "Fused Grocery" text,
-    "Total Calories" numeric,
-    "Total Protein" numeric,
-    "Total Fat" numeric,
-    "Total Carbs" numeric,
-    "Total Cost" numeric
+    "RecipeName" text,
+    "Calories" numeric,
+    "Protein" numeric,
+    "Fat" numeric,
+    "Carbs" numeric,
+    "Cost" numeric,
+    "Time" numeric,
+    "Servings" numeric,
+    "Ingredients" text,
+    "Filter" text,
+    "CaloriesRatio" text,
+    "UniqueItemsCount" numeric
 );
 
+-- Drop the meal_plan_20k table if it exists
+DROP TABLE IF EXISTS meal_plan_20k;
 
+-- Create the meal_plan_20k table
 CREATE TABLE meal_plan_20k (
     "Names" text,
     "Breakfast 1" text,
@@ -105,11 +107,34 @@ CREATE TABLE meal_plan_20k (
     "Total Protein" numeric,
     "Total Fat" numeric,
     "Total Carbs" numeric,
-    "Total Cost" numeric
+    "Total Cost" numeric,
+    "Total Time" numeric,
+    "Total Servings" numeric,
+    "Unique Grocery Items" text,
+    "Filter" text,
+    "Calories Ratio" text,
+    "Unique Items Count" numeric
 );
 
-COPY recipes_macros FROM '/home/ec2-user/bruh_please/ingredients_of_macros copy.csv' DELIMITER ',' CSV HEADER;
+CREATE TABLE recipes_page (
+    "type" text,
+    "title" text,
+    "info" text[],
+    "recipes" text[]
+);
 
-COPY meal_plan_20k FROM '/home/ec2-user/bruh_please/meal_plans_20k copy.csv' DELIMITER ',' CSV HEADER;
+CREATE TABLE meal_plan_page (
+    "title" text,
+    "type" text,
+    "info" text[],
+    "meal_plans" jsonb
+);
 
-COPY recipes_ingredients FROM '/home/ec2-user/recipes_with_macros copy.csv' DELIMITER ',' CSV HEADER;
+COPY recipes_page FROM '/home/ec2-user/bruh_please/FINISHED/recipes_page.csv' DELIMITER ',' CSV HEADER;
+
+COPY meal_plan_page FROM '/home/ec2-user/bruh_please/FINISHED/mealplan_page.csv' DELIMITER ',' CSV HEADER;
+
+COPY recipes_macros FROM '/home/ec2-user/bruh_please/FINISHED/recipes_with_macros_filter.csv' DELIMITER ',' CSV HEADER;
+
+COPY meal_plan_20k FROM '/home/ec2-user/bruh_please/FINISHED/meal_plans_final_v1_names.csv' DELIMITER ',' CSV HEADER;
+
