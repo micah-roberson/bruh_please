@@ -71,26 +71,49 @@ CREATE TABLE recipes_ingredients (
 
 DROP TABLE IF EXISTS recipes_macros;
 
--- Create the recipes_macros table
+
 CREATE TABLE recipes_macros (
-    "RecipeName" text,
-    "Calories" numeric,
-    "Protein" numeric,
-    "Fat" numeric,
-    "Carbs" numeric,
-    "Cost" numeric,
-    "Time" numeric,
-    "Servings" numeric,
-    "Ingredients" text,
-    "Filter" text,
-    "CaloriesRatio" text,
-    "UniqueItemsCount" numeric
+    RecipeName VARCHAR(255),
+    Category VARCHAR(255),
+    Description TEXT,
+    Instructions TEXT,
+    GroceryItems TEXT,
+    GroceryQuantities TEXT,
+    GroceryTypes TEXT,
+    TotalTime VARCHAR(20),
+    ServingSize INT,
+    FusedGrocery TEXT,
+    TotalCalories DECIMAL(10,2),
+    TotalProtein DECIMAL(10,2),
+    TotalFat DECIMAL(10,2),
+    TotalCarbs DECIMAL(10,2),
+    TotalCost DECIMAL(10,2),
+    RecipeFilter VARCHAR(255),
+    TotalTimeMins INT
+);
+CREATE TABLE Recipes (
+    RecipeName VARCHAR(255),
+    Category VARCHAR(255),
+    Description TEXT,
+    Instructions TEXT,
+    GroceryItems TEXT,
+    GroceryQuantities TEXT,
+    GroceryTypes TEXT,
+    TotalTime VARCHAR(20),
+    ServingSize INT,
+    FusedGrocery TEXT,
+    TotalCalories DECIMAL(10,2),
+    TotalProtein DECIMAL(10,2),
+    TotalFat DECIMAL(10,2),
+    TotalCarbs DECIMAL(10,2),
+    TotalCost DECIMAL(10,2),
+    RecipeFilter VARCHAR(255),
+    TotalTimeMins INT
 );
 
 -- Drop the meal_plan_20k table if it exists
-DROP TABLE IF EXISTS meal_plan_20k;
+DROP TABLE meal_plan_20k;
 
--- Create the meal_plan_20k table
 CREATE TABLE meal_plan_20k (
     "Names" text,
     "Breakfast 1" text,
@@ -115,26 +138,32 @@ CREATE TABLE meal_plan_20k (
     "Calories Ratio" text,
     "Unique Items Count" numeric
 );
+DELETE TABLE recipes_page;
 
 CREATE TABLE recipes_page (
-    "type" text,
-    "title" text,
-    "info" text[],
-    "recipes" text[]
+    id SERIAL PRIMARY KEY,
+    type VARCHAR(255),
+    title VARCHAR(255),
+    info JSON,
+    recipes JSON
 );
+
+DELETE TABLE meal_plan_page;
 
 CREATE TABLE meal_plan_page (
-    "title" text,
-    "type" text,
-    "info" text[],
-    "meal_plans" jsonb
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    type VARCHAR(255),
+    info JSON,
+    meal_plans JSON
 );
 
-COPY recipes_page FROM '/home/ec2-user/bruh_please/FINISHED/recipes_page.csv' DELIMITER ',' CSV HEADER;
+\copy recipes_page FROM '/home/ec2-user/bruh_please/recipes_page.csv' DELIMITER ',' CSV HEADER;
 
-COPY meal_plan_page FROM '/home/ec2-user/bruh_please/FINISHED/mealplan_page.csv' DELIMITER ',' CSV HEADER;
+\copy meal_plan_page FROM '/home/ec2-user/bruh_please/mealplan_page.csv' DELIMITER ',' CSV HEADER;
 
-COPY recipes_macros FROM '/home/ec2-user/bruh_please/FINISHED/recipes_with_macros_filter.csv' DELIMITER ',' CSV HEADER;
 
-COPY meal_plan_20k FROM '/home/ec2-user/bruh_please/FINISHED/meal_plans_final_v1_names.csv' DELIMITER ',' CSV HEADER;
+\copy meal_plan_20k FROM '/home/ec2-user/bruh_please/meal_plans_final_v1_names.csv' DELIMITER ',' CSV HEADER;
+
+\copy recipes_macros FROM '/home/ec2-user/bruh_please/recipes_with_macros_filter.csv' DELIMITER ',' CSV HEADER;
 

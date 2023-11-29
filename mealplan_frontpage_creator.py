@@ -59,4 +59,4 @@ def transform_csv(input_csv_path, output_csv_path):
         writer.writerows(transformed_data)
 
 # Replace 'your_input_file.csv' and 'your_output_folder' with your actual file paths
-transform_csv('meal_plans_final_v1_names copy.csv', 'your_output_folder.csv')
+transform_csv('meal_plans_final_v1_names.csv', 'your_output_folder.csv')
