@@ -10,4 +10,4 @@ def remove_empty_rows(input_file, output_file):
         writer.writerows(rows)
 
 # Replace 'input.csv' and 'output.csv' with your file names
-remove_empty_rows('meal_plans_final_v1_names0.csv', 'meal_plans_final_v1_names.csv')
+remove_empty_rows('recipes_with_macros_filter.csv', 'recipes_with_macros_filter.csv')
