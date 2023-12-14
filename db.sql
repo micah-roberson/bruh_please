@@ -73,43 +73,25 @@ DROP TABLE IF EXISTS recipes_macros;
 
 
 CREATE TABLE recipes_macros (
-    RecipeName VARCHAR(255),
+    "recipe name" VARCHAR(255),
     Category VARCHAR(255),
     Description TEXT,
     Instructions TEXT,
-    GroceryItems TEXT,
-    GroceryQuantities TEXT,
-    GroceryTypes TEXT,
-    TotalTime VARCHAR(20),
-    ServingSize INT,
-    FusedGrocery TEXT,
-    TotalCalories DECIMAL(10,2),
-    TotalProtein DECIMAL(10,2),
-    TotalFat DECIMAL(10,2),
-    TotalCarbs DECIMAL(10,2),
-    TotalCost DECIMAL(10,2),
-    RecipeFilter VARCHAR(255),
-    TotalTimeMins INT
+    "Grocery Items" TEXT,
+    "Grocery Quantities" TEXT,
+    "Grocery Types" TEXT,
+    "Total Time" VARCHAR(40),
+    "Serving Size" INT,
+    "Fused Grocery" TEXT,
+    "Total Calories" DECIMAL(10,2),
+    "Total Protein" DECIMAL(10,2),
+    "Total Fat" DECIMAL(10,2),
+    "Total Carbs" DECIMAL(10,2),
+    "Total Cost" DECIMAL(10,2),
+    "Recipe Filter" VARCHAR(255),
+    "Total Time Mins" INT
 );
-CREATE TABLE Recipes (
-    RecipeName VARCHAR(255),
-    Category VARCHAR(255),
-    Description TEXT,
-    Instructions TEXT,
-    GroceryItems TEXT,
-    GroceryQuantities TEXT,
-    GroceryTypes TEXT,
-    TotalTime VARCHAR(20),
-    ServingSize INT,
-    FusedGrocery TEXT,
-    TotalCalories DECIMAL(10,2),
-    TotalProtein DECIMAL(10,2),
-    TotalFat DECIMAL(10,2),
-    TotalCarbs DECIMAL(10,2),
-    TotalCost DECIMAL(10,2),
-    RecipeFilter VARCHAR(255),
-    TotalTimeMins INT
-);
+
 
 -- Drop the meal_plan_20k table if it exists
 DROP TABLE meal_plan_20k;
@@ -138,29 +120,28 @@ CREATE TABLE meal_plan_20k (
     "Calories Ratio" text,
     "Unique Items Count" numeric
 );
-DELETE TABLE recipes_page;
+DROP TABLE IF EXISTS recipes_page;
 
 CREATE TABLE recipes_page (
-    id SERIAL PRIMARY KEY,
     type VARCHAR(255),
     title VARCHAR(255),
     info JSON,
     recipes JSON
 );
 
-DELETE TABLE meal_plan_page;
+DROP TABLE IF EXISTS meal_plan_page;
 
 CREATE TABLE meal_plan_page (
-    id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     type VARCHAR(255),
     info JSON,
-    meal_plans JSON
+    meal_plans JSON,
+    dinner_1_list JSON,
 );
 
 \copy recipes_page FROM '/home/ec2-user/bruh_please/recipes_page.csv' DELIMITER ',' CSV HEADER;
 
-\copy meal_plan_page FROM '/home/ec2-user/bruh_please/mealplan_page.csv' DELIMITER ',' CSV HEADER;
+\copy meal_plan_page FROM '/home/ec2-user/bruh_please/mealplan_page2.csv' DELIMITER ',' CSV HEADER;
 
 
 \copy meal_plan_20k FROM '/home/ec2-user/bruh_please/meal_plans_final_v1_names.csv' DELIMITER ',' CSV HEADER;

@@ -33,6 +33,9 @@ def transform_csv(input_csv_path, output_csv_path):
         total_time = int(row['Total Time'])
         total_servings = int(row['Total Servings'])
 
+        # Extract Dinner 1 for each meal plan
+        dinner_1_list = [row[f'Dinner 1'] for meal_plan in names]
+
         # Create a dictionary for each row in the transformed format
         transformed_row = {
             'type': 'moms',
@@ -46,13 +49,14 @@ def transform_csv(input_csv_path, output_csv_path):
                 total_time,
                 total_servings
             ],
-            'meal_plans': names
+            'meal_plans': names,
+            'dinner_1_list': dinner_1_list  # Add the array of Dinner 1 for each meal plan
         }
 
         transformed_data.append(transformed_row)
 
     # Write the transformed data to the output CSV file
-    fieldnames = ['type', 'title', 'info', 'meal_plans']
+    fieldnames = ['type', 'title', 'info', 'meal_plans', 'dinner_1_list']
     with open(output_csv_path, 'w', newline='', encoding='utf-8') as output_file:
         writer = csv.DictWriter(output_file, fieldnames=fieldnames)
         writer.writeheader()
