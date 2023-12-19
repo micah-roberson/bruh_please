@@ -141,7 +141,7 @@ CREATE TABLE meal_plan_page (
 
 \copy recipes_page FROM '/home/ec2-user/bruh_please/recipes_page.csv' DELIMITER ',' CSV HEADER;
 
-\copy meal_plan_page FROM '/home/ec2-user/bruh_please/mealplan_page2.csv' DELIMITER ',' CSV HEADER;
+\copy meal_plan_page FROM '/home/ec2-user/bruh_please/mealplan_page3.csv' DELIMITER ',' CSV HEADER;
 
 
 \copy meal_plan_20k FROM '/home/ec2-user/bruh_please/meal_plans_final_v1_names.csv' DELIMITER ',' CSV HEADER;
